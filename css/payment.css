@@ -1,7 +1,7 @@
 .payment {
   display: flex;
-  /* max-width: 1600px; */
-  /* height: 1200px; */
+  width: 100%; 
+  height: 100%;
   padding: 195px 0px 196px 0px;
   justify-content: center;
   align-items: center;
@@ -111,10 +111,16 @@
 .form__input {
   border-radius: 10px;
   background: #F2ECEC;
+  
   box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-
+.form__input_big {
+  padding: 18px 94px;
+}
+.form__item_small {
+  padding: 18px 25px;
+}
 .form__input::placeholder {
   text-align: center;
   color: var(--violet);
@@ -143,5 +149,6 @@
   border-radius: 10px;
   background: #FFA900;
   padding: 22px 92px 18px;
+  border: none;
   margin: 0 auto;
 }

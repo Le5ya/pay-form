@@ -1,4 +1,4 @@
-const inputNum= document.querySelector('.form__input_big_num');
+const inputNum= document.querySelector('.form__input_num');
 const cardMask = new Inputmask('9999 9999 9999 9999');
 
 cardMask.mask(inputNum);
@@ -6,7 +6,7 @@ cardMask.mask(inputNum);
 const justValidate = new JustValidate('.payment__form');
 
 justValidate
-  .addField('.form__input_big_name', [
+  .addField('.form__input_name', [
       {
         rule: 'required',
         errorMessage: 'Укажите ваше имя'
@@ -22,7 +22,7 @@ justValidate
         errorMessage: 'Слишком длинное имя'
       }
   ])
-  .addField('.form__input_big_num', [
+  .addField('.form__input_num', [
     {
       rule: 'required',
       errorMessage: 'Укажите номер карты'
@@ -30,11 +30,15 @@ justValidate
     {
       validator(value) {
         const card = inputNum.inputmask.unmaskedvalue();
-        return !!(Number(card) && phone.length === 16);
+        return !!(Number(card) && card.length === 16);
       },
       errorMessage: 'Номер не корректный'
     }
   ])
+  .addField('.form__item_exp', [{
+    rule: 'required',
+    errorMessage: 'Укажите срок действия карты'
+  }])
   // .onSucces(event => {
   //   const target = event.target;
   //   axios.post('https://jsonplaceholder.typicode.com/posts', {
