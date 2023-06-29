@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/inputmask.min.js"></script>
+  <script defer src="js/axios.min.js"></script>
+  <script defer src="js/just-validate.production.min.js"></script>
+  <script defer src="js/script.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <section class=" section payment">
+    <div class="payment__page">
+      <div class="payment__container">
+      <div class="secure payment__secure">
+        <img class="vidj secure__vidj" src="img/secure.svg" alt="">
+        <span class="vidj-text secure__vidj-text">Secure Checkout</span>
+      </div>
+      <div class="card payment__card">
+        <div class="logo">
+          <img class="logo__title" src="img/visa.svg" />
+          <img src="img/g13.png" class="logo__g13" alt="g13">
+        </div>
+        <div class="card__number">xxxx xxxx xxxx 4444</div>
+        <div class="owner card__owner">
+          <div class="owner__name">Leskin Maksim</div>
+          <div class="owner__time">04/24</div>
+        </div>
+      </div>
+      <div class="payment__alter">
+        <div class="add">
+          <img src="img/new-card.svg" alt="" class="vidj_alt">
+        <div class="vidj-text  vidj-text_alt">Add new card</div>
+        </div>
+        <div class="scan">
+          <img src="img/scan.svg" alt="" class="vidj_alt">
+          <div class="vidj-text vidj-text_alt">Scan & Add</div>
+        </div>
+      </div>
+      <form action="#" class="form payment__form">
+        <label class="form__item">Card Holder
+          <input class="form__input form__input_big form__input_big_name" type="text" name="name" placeholder="Leskin Maksim" required>
+        </label>
+        <label class="form__item">Card Number
+          <input class="form__input form__input_big form__input_big_num" type="text" name="name" placeholder="xxxx xxxx xxxx 4444" required>
+        </label>
+        <div class="form__data">
+          <label class="form__item form__item_small">Card Expiry
+            <input class="form__input form__input_small" type="datetime" name="" placeholder="04 / 24" required>
+          </label>
+          <label class="form__item form__item_small">CVV
+            <input class="form__input form__input_small" type="text" name="" placeholder="xxx" required>
+          </label>
+          
+        </div>
+      </form>
+      <button class="payment__button">CHECK OUT</button>
+    </div>
+    </div>
+  </section>
+</body>
+</html>
