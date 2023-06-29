@@ -9,7 +9,7 @@
   background: linear-gradient(227deg, rgba(82, 0, 106, 0.70) 38.98%, rgba(205, 17, 59, 0.70) 78.76%);
 }
 .payment__page {
-  width: 28%;
+ width: 30%;;
   /* height: 809px; */
  padding-top: 28px;
  padding-bottom: 45px;
@@ -62,8 +62,8 @@
 .card__number {
   font-size: 19px;
   letter-spacing: 2.85px;
+  text-align: center;
   color: var(--violet);
-  padding: 0 50px;
   margin-bottom: 43px;
 }
 .card__owner {
