@@ -142,6 +142,23 @@
   width: 108px;
   height: 60px;
 }
+.exp-wrapper {
+  width: 108px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  background: #F2ECEC;
+  
+  box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.25);
+}
+.exp {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: transparent;
+}
 .payment__button {
   display: block;
   color: var(--violet);
