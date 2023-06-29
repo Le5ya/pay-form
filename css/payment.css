@@ -1,6 +1,7 @@
 .payment {
   display: flex;
-  height: 1200px;
+  /* max-width: 1600px; */
+  /* height: 1200px; */
   padding: 195px 0px 196px 0px;
   justify-content: center;
   align-items: center;
