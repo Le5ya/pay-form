@@ -42,27 +42,24 @@
       </div>
       <form action="#" class="form payment__form">
         <label class="form__item">Card Holder
-          <input class="form__input form__input_big form__input_name" type="text" name="name" placeholder="Leskin Maksim" required>
+          <input class="form__input form__input_big form__input_name" type="" name="name" placeholder="Leskin Maksim" required>
         </label>
         <label class="form__item">Card Number
-          <input class="form__input form__input_big form__input_num" type="text" name="name" placeholder="xxxx xxxx xxxx 4444" required>
+          <input class="form__input form__input_big form__input_num" type="" name="card" placeholder="xxxx xxxx xxxx 4444" required>
         </label>
-        <div class="form__data">
-          <label class="form__item form__item_small form__item_exp">Card Expiry
-            <div class="exp-wrapper">
-              <input autocomplete="off" class="exp" id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
-            <input autocomplete="off" class="exp" id="year" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
-            </div>
-            
-            <!-- <input class="form__input form__input_small" type="datetime" name="" placeholder="04 / 24" required> -->
+        <div class="form__items_small">
+          <label class="form__item form__item_small">Card Expiry
+            <input class="form__input form__input_small form__input_date" type="datetime" name="term"
+            placeholder="04 / 29" 
+            required>
           </label>
           <label class="form__item form__item_small">CVV
-            <input class="form__input form__input_small" type="text" name="" placeholder="xxx" required>
+            <input class="form__input form__input_small form__input_cvv" type="" name="cvv" placeholder="xxx" required>
           </label>
-          
         </div>
+        <button class="payment__submit payment__button">CHECK OUT</button>  
       </form>
-      <button class="payment__button">CHECK OUT</button>
+      
     </div>
     </div>
   </section>
