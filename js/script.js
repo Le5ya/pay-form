@@ -91,7 +91,7 @@ justValidate
     })
     .then(response => {
       console.log(response)
-  //     target.reset();
+      target.reset();
       checkTitle.textContent = `Спасибо, ваша карта принята, номер заявки ${response.data.id}!`
     }) 
      .catch(err => {
