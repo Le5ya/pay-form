@@ -18,6 +18,8 @@ const cardNumber = document.querySelector('.card__number');
 const ownerName = document.querySelector('.owner__name');
 const ownerTime = document.querySelector('.owner__time');
 
+const checkTitle = document.querySelector('.payment__check-title')
+
 inputNum.oninput = function() {
   cardNumber.textContent = this.value;
 } 
@@ -28,13 +30,6 @@ validityTerm.oninput = function() {
   ownerTime.textContent = this.value;
 } 
   
-
-
-
-
-
-
-
 const justValidate = new JustValidate('.payment__form');
 justValidate
   .addField('.form__input_name', [
@@ -85,40 +80,45 @@ justValidate
     errorMessage: 'CVV не корректный'
   }
 ])
-  // .onSuccess(event => {
-  //   const target = event.target;
-  //   axios.post('https://jsonplaceholder.typicode.com/posts', {
-  //     name: target.name.value,
-  //     tel: inputTel.inputmask.unmaskedvalue(),
-  //   })
-  //   .then(response => {
-  //     target.reset();
-  //     modalOrderTitle.textContent = `Спасибо, ваша заявkа принята, номер заявки ${responce.data.id}!`
-  //   }) 
-  //   .catch(err => {
-  //     modalOrderTitle.textContent = `Что-то пошло не так, попробуйте снова!`
-  //   })
-  // })
-
-
-
-
-const form = document.querySelector('.payment__form');
-
-form.submit(function (event) {
-  event.preventDefault();
-  $.ajax({
-    url: 'https://jsonplaceholder.typicode.com/todos',
-    type: 'POST',
-    data: $(this).serialize(),
-    success(data) {
-      modalOrderTitle.text('Спасибо, ваша карта принята, номер заявки ' + data.id)
-      $('.modal-order__form').slideUp(300);
-    },
-    error() {
-      modalOrderTitle.text('Что-то пошло не так, попробуйте позже')
-    }
+   .onSuccess(event => {
     
-  })
-})
-  form.reset()
+     const target = event.target;
+     axios.post('https://jsonplaceholder.typicode.com/posts', {
+      name: target.name.value, 
+      card: target.card.value,
+      term: target.term.value,
+      cvv: target.cvv.value,
+    })
+    .then(response => {
+      console.log(response)
+  //     target.reset();
+      checkTitle.textContent = `Спасибо, ваша карта принята, номер заявки ${response.data.id}!`
+    }) 
+     .catch(err => {
+       checkTitle.textContent = `Что-то пошло не так, попробуйте снова!`;
+       checkTitle.style.color = 'red';
+    })
+   })
+
+ 
+
+
+// const form = document.querySelector('.payment__form');
+
+// form.submit(function (event) {
+//   event.preventDefault();
+//   $.ajax({
+//     url: 'https://jsonplaceholder.typicode.com/todos',
+//     type: 'POST',
+//     data: $(this).serialize(),
+//     success(data) {
+//       modalOrderTitle.text('Спасибо, ваша карта принята, номер заявки ' + data.id)
+//       $('.modal-order__form').slideUp(300);
+//     },
+//     error() {
+//       modalOrderTitle.text('Что-то пошло не так, попробуйте позже')
+//     }
+    
+//   })
+// })
+//   form.reset()

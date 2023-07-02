@@ -154,3 +154,7 @@
   margin: 0 auto;
   cursor: pointer;
 }
+.payment__check-title {
+  display: block;
+  color: green;
+}
