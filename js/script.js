@@ -1,6 +1,7 @@
-const inputNum= document.querySelector('.form__input_num');
-const cardMask = new Inputmask('9999 9999 9999 9999');
+const inputNum = document.querySelector('.form__input_num');
+const cardMask = new Inputmask("9999 9999 9999 9999");
 cardMask.mask(inputNum);
+
 
 const validityTerm = document.querySelector('.form__input_date');
 const termMask = new Inputmask('99 / 99', {placeholder: "MM / YY"});
@@ -10,10 +11,31 @@ const inputCvv = document.querySelector('.form__input_cvv')
 const cvvMask = new Inputmask('999');
 cvvMask.mask(inputCvv);
 
+const inputName = document.querySelector('.form__input_name')
+
+
+const cardNumber = document.querySelector('.card__number');
+const ownerName = document.querySelector('.owner__name');
+const ownerTime = document.querySelector('.owner__time');
+
+inputNum.oninput = function() {
+  cardNumber.textContent = this.value;
+} 
+inputName.oninput = function() {
+  ownerName.textContent = this.value;
+} 
+validityTerm.oninput = function() {
+  ownerTime.textContent = this.value;
+} 
+  
+
+
+
+
+
+
 
 const justValidate = new JustValidate('.payment__form');
-
-
 justValidate
   .addField('.form__input_name', [
       {
@@ -36,18 +58,14 @@ justValidate
       rule: 'required',
       errorMessage: 'Укажите номер карты'
     },
-//     {
-//       rule: 'minLength',
-//         value: 16,
-//       validator(value) {
-//         console.log(value);
-//         return false
-//             const card = inputNum.cardMask.unmaskedvalue();
-//             return (Number(card) && card.length === 16);
-            
-//             },
-//             errorMessage: 'Номер не корректный'
-//     }
+    {
+
+      validator(value) {
+            const card = cardMask.unmaskedvalue(inputNum.value)
+            return !!(Number(card) && card.length === 16);
+            },
+            errorMessage: 'Номер не корректный'
+    }
    ])
   .addField('.form__input_date', [{
     rule: 'required',
@@ -57,17 +75,17 @@ justValidate
     rule: 'required',
     errorMessage: 'Введите CVV'
   },
-  // { 
-  //   validator(value) {
+  { 
+   
+    validator(value) {
+      const cvv = cvvMask.unmaskedvalue(inputCvv.value);
+      return !!(Number(cvv) && cvv.length === 3);
       
-  //     const cvv = inputCvv.cvvMask.unmaskedvalue();
-  //     return (Number(cvv) && cvv.length === 3);
-      
-  //   },
-  //   errorMessage: 'CVV не корректный'
-  // }
+    },
+    errorMessage: 'CVV не корректный'
+  }
 ])
-  // .onSucces(event => {
+  // .onSuccess(event => {
   //   const target = event.target;
   //   axios.post('https://jsonplaceholder.typicode.com/posts', {
   //     name: target.name.value,
@@ -81,6 +99,8 @@ justValidate
   //     modalOrderTitle.textContent = `Что-то пошло не так, попробуйте снова!`
   //   })
   // })
+
+
 
 
 const form = document.querySelector('.payment__form');

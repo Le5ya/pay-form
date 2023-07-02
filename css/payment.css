@@ -9,8 +9,6 @@
   background: linear-gradient(227deg, rgba(82, 0, 106, 0.70) 38.98%, rgba(205, 17, 59, 0.70) 78.76%);
 }
 .payment__page {
- width: 30%;;
-  /* height: 809px; */
  padding-top: 28px;
  padding-bottom: 45px;
   background: rgba(241, 241, 241, 0.83);
@@ -154,4 +152,5 @@
   padding: 22px 92px 18px;
   border: none;
   margin: 0 auto;
+  cursor: pointer;
 }
