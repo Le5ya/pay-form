@@ -29,7 +29,7 @@ inputName.oninput = function() {
 validityTerm.oninput = function() {
   ownerTime.textContent = this.value;
 } 
-  
+
 const justValidate = new JustValidate('.payment__form');
 justValidate
   .addField('.form__input_name', [
@@ -65,7 +65,49 @@ justValidate
   .addField('.form__input_date', [{
     rule: 'required',
     errorMessage: 'Укажите срок действия карты'
-  }])
+  },
+  {
+    validator(value) {
+      let userDate = new Date('20'+value.split(' / ').reverse().join('-') )
+      if (!(userDate instanceof Date && !isNaN(userDate))){
+        // Do not do something (date is invalid)
+        // but return
+        return false
+      }
+      // Card is not expired, continiue processing
+      return true
+    },
+    errorMessage : 'Введена не дата'
+  },
+  {
+    validator(value) {
+      let userDate = new Date('20'+value.split(' / ').reverse().join('-') )
+      const year30 = new Date('2030-12-31')
+      let currentDate = new Date()
+      if (userDate < currentDate) {
+        // Card expired, return
+        return false
+      }
+      // Card is not expired, continiue processing
+      return true
+    },
+    errorMessage : 'Срок действия истёк'
+  },
+  {
+    validator(value) {
+      let userDate = new Date('20'+value.split(' / ').reverse().join('-') )
+      const year30 = new Date('2030-12-31')
+      let currentDate = new Date()
+      if (userDate > year30){
+        // too late, return
+        return false
+      }
+      // Card is not expired, continiue processing
+      return true
+    },
+    errorMessage : 'Карта позже 30 года'
+  }
+])
   .addField('.form__input_cvv', [{
     rule: 'required',
     errorMessage: 'Введите CVV'
@@ -90,17 +132,27 @@ justValidate
       cvv: target.cvv.value,
     })
     .then(response => {
-      console.log(response)
       target.reset();
       checkTitle.textContent = `Спасибо, ваша карта принята, номер заявки ${response.data.id}!`
+
     }) 
      .catch(err => {
        checkTitle.textContent = `Что-то пошло не так, попробуйте снова!`;
        checkTitle.style.color = 'red';
     })
-   })
+   });
 
- 
+
+
+
+
+    
+// Есть дата в формате MM/YY ('11 / 11')
+// Нужно: 
+// - выделить год и месяц
+// - сравнить с текущими
+// - сравнить с 30 годом на кой-то хер
+// - Если проверка не пройдена, дать об знать.
 
 
 // const form = document.querySelector('.payment__form');
